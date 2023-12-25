@@ -16,19 +16,5 @@ class LocaleNotifier extends Notifier<AppLocale> {
   }
 }
 
-class CounterNotifier extends Notifier<int> {
-  @override
-  build() {
-    return 0;
-  }
-
-  void increment() {
-    state++;
-  }
-}
-
 final localeProvider =
     NotifierProvider<LocaleNotifier, AppLocale>(LocaleNotifier.new);
-
-final counterProvider =
-    NotifierProvider<CounterNotifier, int>(CounterNotifier.new);

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 14 (7 per locale)
+/// Strings: 10 (5 per locale)
 ///
-/// Built on 2023-12-25 at 01:32 UTC
+/// Built on 2023-12-25 at 06:08 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -148,27 +148,33 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
-	late final _StringsMainScreenEn mainScreen = _StringsMainScreenEn._(_root);
+	late final _StringsSettingsEn settings = _StringsSettingsEn._(_root);
 	Map<String, String> get locales => {
 		'en': 'English',
-		'de': 'Deutsch',
 		'ja': 'Japanese',
+		'de': 'German',
 	};
 }
 
-// Path: mainScreen
-class _StringsMainScreenEn {
-	_StringsMainScreenEn._(this._root);
+// Path: settings
+class _StringsSettingsEn {
+	_StringsSettingsEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'Japanese Title';
-	String counter({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
-		one: 'I pressed the button ${n} times.',
-		other: 'I pressed the button ${n} times.',
-	);
-	String get tapMe => 'Push it';
+	late final _StringsSettingsLanguageEn language = _StringsSettingsLanguageEn._(_root);
+}
+
+// Path: settings.language
+class _StringsSettingsLanguageEn {
+	_StringsSettingsLanguageEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Language';
+	String get currentLanguage => 'English';
 }
 
 // Path: <root>
@@ -195,27 +201,33 @@ class _StringsJa implements Translations {
 	@override late final _StringsJa _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMainScreenJa mainScreen = _StringsMainScreenJa._(_root);
+	@override late final _StringsSettingsJa settings = _StringsSettingsJa._(_root);
 	@override Map<String, String> get locales => {
 		'en': '英語',
-		'de': 'ドイツ語',
 		'ja': '日本語',
+		'de': 'ドイツ語',
 	};
 }
 
-// Path: mainScreen
-class _StringsMainScreenJa implements _StringsMainScreenEn {
-	_StringsMainScreenJa._(this._root);
+// Path: settings
+class _StringsSettingsJa implements _StringsSettingsEn {
+	_StringsSettingsJa._(this._root);
 
 	@override final _StringsJa _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '日本語のタイトル';
-	@override String counter({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('ja'))(n,
-		one: 'ボタンを${n}回押しました。',
-		other: 'ボタンを${n}回押しました。',
-	);
-	@override String get tapMe => '押してね';
+	@override late final _StringsSettingsLanguageJa language = _StringsSettingsLanguageJa._(_root);
+}
+
+// Path: settings.language
+class _StringsSettingsLanguageJa implements _StringsSettingsLanguageEn {
+	_StringsSettingsLanguageJa._(this._root);
+
+	@override final _StringsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '言語';
+	@override String get currentLanguage => '日本語';
 }
 
 /// Flat map(s) containing all translations.
@@ -224,15 +236,11 @@ class _StringsMainScreenJa implements _StringsMainScreenEn {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'mainScreen.title': return 'Japanese Title';
-			case 'mainScreen.counter': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
-				one: 'I pressed the button ${n} times.',
-				other: 'I pressed the button ${n} times.',
-			);
-			case 'mainScreen.tapMe': return 'Push it';
+			case 'settings.language.title': return 'Language';
+			case 'settings.language.currentLanguage': return 'English';
 			case 'locales.en': return 'English';
-			case 'locales.de': return 'Deutsch';
 			case 'locales.ja': return 'Japanese';
+			case 'locales.de': return 'German';
 			default: return null;
 		}
 	}
@@ -241,15 +249,11 @@ extension on Translations {
 extension on _StringsJa {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'mainScreen.title': return '日本語のタイトル';
-			case 'mainScreen.counter': return ({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('ja'))(n,
-				one: 'ボタンを${n}回押しました。',
-				other: 'ボタンを${n}回押しました。',
-			);
-			case 'mainScreen.tapMe': return '押してね';
+			case 'settings.language.title': return '言語';
+			case 'settings.language.currentLanguage': return '日本語';
 			case 'locales.en': return '英語';
-			case 'locales.de': return 'ドイツ語';
 			case 'locales.ja': return '日本語';
+			case 'locales.de': return 'ドイツ語';
 			default: return null;
 		}
 	}

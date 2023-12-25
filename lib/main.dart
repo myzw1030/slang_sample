@@ -3,11 +3,14 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:slang_sample/i18n/strings.g.dart';
 import 'package:slang_sample/local_state.dart';
+import 'package:slang_sample/pages/main_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  // デバイスのロケール設定に基づいて初期化
   LocaleSettings.useDeviceLocale();
   runApp(ProviderScope(
+    // アプリ内で言語を変更時に、その変更に更新
     child: TranslationProvider(
       child: const MyApp(),
     ),
@@ -26,64 +29,13 @@ class MyApp extends ConsumerWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      // 現在選択されている言語（ロケール）
       locale: currentLocale.flutterLocale,
+      // アプリがサポートする言語を定義
       supportedLocales: AppLocaleUtils.supportedLocales,
+      // 言語リソースを提供するためのデリゲートを定義
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends ConsumerWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final t = Translations.of(context);
-    final counter = ref.watch(counterProvider);
-    final activeLocale = ref.watch(localeProvider);
-
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(t.mainScreen.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              t.mainScreen.counter(n: counter),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: AppLocale.values.map((locale) {
-                final bool active = activeLocale == locale;
-
-                return Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: active ? Colors.blue.shade200 : null,
-                    ),
-                    onPressed: () {
-                      ref.read(localeProvider.notifier).changeLocale(locale);
-                    },
-                    child: Text(t.locales[locale.languageTag]!),
-                  ),
-                );
-              }).toList(),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ref.read(counterProvider.notifier).increment();
-        },
-        tooltip: context.t.mainScreen.tapMe,
-        child: const Icon(Icons.add),
-      ),
+      home: const MainPage(),
     );
   }
 }

@@ -1,15 +1,13 @@
 {
-  "mainScreen": {
-    "title": "Japanese Title",
-    "counter": {
-      "one": "I pressed the button $n times.",
-      "other": "I pressed the button $n times."
-    },
-    "tapMe": "Push it"
+  "settings": {
+    "language": {
+      "title": "Language",
+      "currentLanguage": "English"
+    }
   },
   "locales(map)": {
     "en": "English",
-    "de": "Deutsch",
-    "ja": "Japanese"
+    "ja": "Japanese",
+    "de": "German"
   }
 }
