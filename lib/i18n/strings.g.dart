@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 10 (5 per locale)
+/// Strings: 14 (7 per locale)
 ///
-/// Built on 2023-12-25 at 06:08 UTC
+/// Built on 2023-12-25 at 09:06 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -148,12 +148,24 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
+	late final _StringsNavigationBarEn navigationBar = _StringsNavigationBarEn._(_root);
 	late final _StringsSettingsEn settings = _StringsSettingsEn._(_root);
 	Map<String, String> get locales => {
 		'en': 'English',
 		'ja': 'Japanese',
 		'de': 'German',
 	};
+}
+
+// Path: navigationBar
+class _StringsNavigationBarEn {
+	_StringsNavigationBarEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsNavigationBarHomeEn home = _StringsNavigationBarHomeEn._(_root);
+	late final _StringsNavigationBarSettingsEn settings = _StringsNavigationBarSettingsEn._(_root);
 }
 
 // Path: settings
@@ -164,6 +176,26 @@ class _StringsSettingsEn {
 
 	// Translations
 	late final _StringsSettingsLanguageEn language = _StringsSettingsLanguageEn._(_root);
+}
+
+// Path: navigationBar.home
+class _StringsNavigationBarHomeEn {
+	_StringsNavigationBarHomeEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'home';
+}
+
+// Path: navigationBar.settings
+class _StringsNavigationBarSettingsEn {
+	_StringsNavigationBarSettingsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'settings';
 }
 
 // Path: settings.language
@@ -201,12 +233,24 @@ class _StringsJa implements Translations {
 	@override late final _StringsJa _root = this; // ignore: unused_field
 
 	// Translations
+	@override late final _StringsNavigationBarJa navigationBar = _StringsNavigationBarJa._(_root);
 	@override late final _StringsSettingsJa settings = _StringsSettingsJa._(_root);
 	@override Map<String, String> get locales => {
 		'en': '英語',
 		'ja': '日本語',
 		'de': 'ドイツ語',
 	};
+}
+
+// Path: navigationBar
+class _StringsNavigationBarJa implements _StringsNavigationBarEn {
+	_StringsNavigationBarJa._(this._root);
+
+	@override final _StringsJa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsNavigationBarHomeJa home = _StringsNavigationBarHomeJa._(_root);
+	@override late final _StringsNavigationBarSettingsJa settings = _StringsNavigationBarSettingsJa._(_root);
 }
 
 // Path: settings
@@ -217,6 +261,26 @@ class _StringsSettingsJa implements _StringsSettingsEn {
 
 	// Translations
 	@override late final _StringsSettingsLanguageJa language = _StringsSettingsLanguageJa._(_root);
+}
+
+// Path: navigationBar.home
+class _StringsNavigationBarHomeJa implements _StringsNavigationBarHomeEn {
+	_StringsNavigationBarHomeJa._(this._root);
+
+	@override final _StringsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'ホーム';
+}
+
+// Path: navigationBar.settings
+class _StringsNavigationBarSettingsJa implements _StringsNavigationBarSettingsEn {
+	_StringsNavigationBarSettingsJa._(this._root);
+
+	@override final _StringsJa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '設定';
 }
 
 // Path: settings.language
@@ -236,6 +300,8 @@ class _StringsSettingsLanguageJa implements _StringsSettingsLanguageEn {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'navigationBar.home.title': return 'home';
+			case 'navigationBar.settings.title': return 'settings';
 			case 'settings.language.title': return 'Language';
 			case 'settings.language.currentLanguage': return 'English';
 			case 'locales.en': return 'English';
@@ -249,6 +315,8 @@ extension on Translations {
 extension on _StringsJa {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
+			case 'navigationBar.home.title': return 'ホーム';
+			case 'navigationBar.settings.title': return '設定';
 			case 'settings.language.title': return '言語';
 			case 'settings.language.currentLanguage': return '日本語';
 			case 'locales.en': return '英語';

@@ -4,11 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:slang_sample/i18n/strings.g.dart';
 import 'package:slang_sample/local_state.dart';
 import 'package:slang_sample/pages/main_page.dart';
+import 'package:slang_sample/services/locale_service.dart';
 
-void main() {
+void main() async {
+  // Flutterのウィジェットバインディングの初期化
   WidgetsFlutterBinding.ensureInitialized();
-  // デバイスのロケール設定に基づいて初期化
-  LocaleSettings.useDeviceLocale();
+  // SharedPreferencesから保存された言語設定を取得
+  await LocaleService.getLanguage();
   runApp(ProviderScope(
     // アプリ内で言語を変更時に、その変更に更新
     child: TranslationProvider(

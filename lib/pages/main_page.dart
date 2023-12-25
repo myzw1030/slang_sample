@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slang_sample/i18n/strings.g.dart';
 import 'package:slang_sample/pages/list_page.dart';
 import 'package:slang_sample/pages/settings_page.dart';
 
@@ -17,6 +18,7 @@ class _MainPageState extends State<MainPage> {
   ];
   @override
   Widget build(BuildContext context) {
+    final translations = Translations.of(context);
     return Scaffold(
       body: _pageWidgets.elementAt(_currentIndex),
       bottomNavigationBar: BottomNavigationBar(
@@ -26,14 +28,14 @@ class _MainPageState extends State<MainPage> {
           })
         },
         currentIndex: _currentIndex,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'home',
+            icon: const Icon(Icons.home),
+            label: translations.navigationBar.home.title,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'settings',
+            icon: const Icon(Icons.settings),
+            label: translations.navigationBar.settings.title,
           ),
         ],
       ),

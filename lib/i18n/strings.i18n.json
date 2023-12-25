@@ -1,4 +1,12 @@
 {
+  "navigationBar": {
+    "home": {
+      "title": "home"
+    },
+    "settings": {
+      "title": "settings"
+    }
+  },
   "settings": {
     "language": {
       "title": "Language",

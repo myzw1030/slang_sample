@@ -10,7 +10,7 @@ class LocalePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // 現在のコンテキストに基づいて適切な翻訳を取得
     final translations = Translations.of(context);
-    final currentLocale = ref.watch(localeProvider);
+    final localeState = ref.watch(localeProvider);
     final localeNotifier = ref.read(localeProvider.notifier);
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +23,7 @@ class LocalePage extends ConsumerWidget {
             final locale = AppLocale.values[index];
             return RadioListTile<AppLocale>(
               value: locale,
-              groupValue: currentLocale,
+              groupValue: localeState,
               title: Text(t.locales[locale.languageTag]!),
               onChanged: (value) {
                 if (value != null) {
