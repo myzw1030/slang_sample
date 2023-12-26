@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:slang_sample/i18n/strings.g.dart';
 import 'package:slang_sample/pages/locale_page.dart';
 
 enum SettingOption {
   language,
-  // themeMode,
+  // 他の設定項目があれば記述。ex)themeMode
 }
 
-class SettingsPage extends ConsumerWidget {
+class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final translations = Translations.of(context);
     return ListView.builder(
       itemCount: SettingOption.values.length,
