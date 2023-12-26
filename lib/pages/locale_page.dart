@@ -24,7 +24,7 @@ class LocalePage extends ConsumerWidget {
             return RadioListTile<AppLocale>(
               value: locale,
               groupValue: localeState,
-              title: Text(t.locales[locale.languageTag]!),
+              title: Text(translations.locales[locale.languageTag]!),
               onChanged: (value) {
                 if (value != null) {
                   localeNotifier.changeLocale(value);
