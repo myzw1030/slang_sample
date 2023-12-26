@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:slang_sample/i18n/strings.g.dart';
-import 'package:slang_sample/local_state.dart';
+import 'package:slang_sample/providers/local_state.dart';
 
 class LocalePage extends ConsumerWidget {
   const LocalePage({super.key});
