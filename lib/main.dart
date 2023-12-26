@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:slang_sample/i18n/strings.g.dart';
 import 'package:slang_sample/pages/main_page.dart';
-import 'package:slang_sample/providers/local_state.dart';
+import 'package:slang_sample/providers/locale_state.dart';
 
 void main() async {
   // Flutterのウィジェットバインディングの初期化
