@@ -1,0 +1,21 @@
+{
+  "navigationBar": {
+    "home": {
+      "title": "首页"
+    },
+    "settings": {
+      "title": "设置"
+    }
+  },
+  "settings": {
+    "language": {
+      "title": "语言",
+      "currentLanguage": "中文"
+    }
+  },
+  "locales(map)": {
+    "en": "英语",
+    "ja": "日语",
+    "zh": "中文"
+  }
+}

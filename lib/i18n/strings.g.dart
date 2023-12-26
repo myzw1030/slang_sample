@@ -3,10 +3,10 @@
 /// Original: lib/i18n
 /// To regenerate, run: `dart run slang`
 ///
-/// Locales: 2
-/// Strings: 14 (7 per locale)
+/// Locales: 3
+/// Strings: 21 (7 per locale)
 ///
-/// Built on 2023-12-25 at 09:06 UTC
+/// Built on 2023-12-26 at 00:58 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -26,7 +26,8 @@ const AppLocale _baseLocale = AppLocale.en;
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
 	en(languageCode: 'en', build: Translations.build),
-	ja(languageCode: 'ja', build: _StringsJa.build);
+	ja(languageCode: 'ja', build: _StringsJa.build),
+	zh(languageCode: 'zh', build: _StringsZh.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
 
@@ -153,7 +154,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	Map<String, String> get locales => {
 		'en': 'English',
 		'ja': 'Japanese',
-		'de': 'German',
+		'zh': 'Chinese',
 	};
 }
 
@@ -238,7 +239,7 @@ class _StringsJa implements Translations {
 	@override Map<String, String> get locales => {
 		'en': '英語',
 		'ja': '日本語',
-		'de': 'ドイツ語',
+		'zh': '中国語',
 	};
 }
 
@@ -294,6 +295,91 @@ class _StringsSettingsLanguageJa implements _StringsSettingsLanguageEn {
 	@override String get currentLanguage => '日本語';
 }
 
+// Path: <root>
+class _StringsZh implements Translations {
+	/// You can call this constructor and build your own translation instance of this locale.
+	/// Constructing via the enum [AppLocale.build] is preferred.
+	_StringsZh.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.zh,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <zh>.
+	@override final TranslationMetadata<AppLocale, Translations> $meta;
+
+	/// Access flat map
+	@override dynamic operator[](String key) => $meta.getTranslation(key);
+
+	@override late final _StringsZh _root = this; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsNavigationBarZh navigationBar = _StringsNavigationBarZh._(_root);
+	@override late final _StringsSettingsZh settings = _StringsSettingsZh._(_root);
+	@override Map<String, String> get locales => {
+		'en': '英语',
+		'ja': '日语',
+		'zh': '中文',
+	};
+}
+
+// Path: navigationBar
+class _StringsNavigationBarZh implements _StringsNavigationBarEn {
+	_StringsNavigationBarZh._(this._root);
+
+	@override final _StringsZh _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsNavigationBarHomeZh home = _StringsNavigationBarHomeZh._(_root);
+	@override late final _StringsNavigationBarSettingsZh settings = _StringsNavigationBarSettingsZh._(_root);
+}
+
+// Path: settings
+class _StringsSettingsZh implements _StringsSettingsEn {
+	_StringsSettingsZh._(this._root);
+
+	@override final _StringsZh _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsSettingsLanguageZh language = _StringsSettingsLanguageZh._(_root);
+}
+
+// Path: navigationBar.home
+class _StringsNavigationBarHomeZh implements _StringsNavigationBarHomeEn {
+	_StringsNavigationBarHomeZh._(this._root);
+
+	@override final _StringsZh _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '首页';
+}
+
+// Path: navigationBar.settings
+class _StringsNavigationBarSettingsZh implements _StringsNavigationBarSettingsEn {
+	_StringsNavigationBarSettingsZh._(this._root);
+
+	@override final _StringsZh _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '设置';
+}
+
+// Path: settings.language
+class _StringsSettingsLanguageZh implements _StringsSettingsLanguageEn {
+	_StringsSettingsLanguageZh._(this._root);
+
+	@override final _StringsZh _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '语言';
+	@override String get currentLanguage => '中文';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -306,7 +392,7 @@ extension on Translations {
 			case 'settings.language.currentLanguage': return 'English';
 			case 'locales.en': return 'English';
 			case 'locales.ja': return 'Japanese';
-			case 'locales.de': return 'German';
+			case 'locales.zh': return 'Chinese';
 			default: return null;
 		}
 	}
@@ -321,7 +407,22 @@ extension on _StringsJa {
 			case 'settings.language.currentLanguage': return '日本語';
 			case 'locales.en': return '英語';
 			case 'locales.ja': return '日本語';
-			case 'locales.de': return 'ドイツ語';
+			case 'locales.zh': return '中国語';
+			default: return null;
+		}
+	}
+}
+
+extension on _StringsZh {
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'navigationBar.home.title': return '首页';
+			case 'navigationBar.settings.title': return '设置';
+			case 'settings.language.title': return '语言';
+			case 'settings.language.currentLanguage': return '中文';
+			case 'locales.en': return '英语';
+			case 'locales.ja': return '日语';
+			case 'locales.zh': return '中文';
 			default: return null;
 		}
 	}

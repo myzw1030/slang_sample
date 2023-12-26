@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:slang_sample/i18n/strings.g.dart';
-import 'package:slang_sample/services/locale_service.dart';
 
 // アプリの現在のロケール（言語設定）を管理
 class LocaleNotifier extends Notifier<AppLocale> {
@@ -14,7 +13,6 @@ class LocaleNotifier extends Notifier<AppLocale> {
   Future<void> changeLocale(AppLocale newLocale) async {
     state = newLocale;
     LocaleSettings.setLocale(newLocale);
-    await LocaleService.saveLanguage(newLocale);
   }
 }
 
